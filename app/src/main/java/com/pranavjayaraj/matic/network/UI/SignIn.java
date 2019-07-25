@@ -1,4 +1,4 @@
-package com.pranavjayaraj.matic.network;
+package com.pranavjayaraj.matic.network.UI;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,13 +15,17 @@ import androidx.appcompat.widget.AppCompatEditText;
 import com.pranavjayaraj.matic.network.KeyStoreHelper.Crypto;
 import com.pranavjayaraj.matic.network.KeyStoreHelper.Options;
 import com.pranavjayaraj.matic.network.KeyStoreHelper.Store;
+import com.pranavjayaraj.matic.network.R;
+
 import javax.crypto.SecretKey;
 
 public class SignIn extends AppCompatActivity {
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sharedpreferences;
     AppCompatEditText USERNAME,PASSWORD;
+    private ImageButton eraseUser,erasePass;
     SharedPreferences.Editor editor;
+    //the keystore name and password is written here only for demo
     String keyStoreName = "maticstore";
     String KeyStorePass = "#maticnetwork123";
 
@@ -38,19 +43,30 @@ public class SignIn extends AppCompatActivity {
         });
         USERNAME = (AppCompatEditText) findViewById(R.id.user);
         PASSWORD = (AppCompatEditText) findViewById(R.id.pass);
+        erasePass= (ImageButton) findViewById(R.id.erasepass);
+        erasePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PASSWORD.getText().clear();
+            }
+        });
+        eraseUser =(ImageButton) findViewById(R.id.eraseuser);
+        eraseUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                USERNAME.getText().clear();
+            }
+        });
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         editor = sharedpreferences.edit();
-
     }
-
-
 
     public void getCredentials(){
         try {
 
             if(getPassKey().equals(PASSWORD.getText().toString()))
             {
-                Intent n = new Intent(SignIn.this,HomeScreen.class);
+                Intent n = new Intent(SignIn.this, HomeScreen.class);
                 n.putExtra("USERNAME",USERNAME.getText().toString());
                 n.putExtra("PASSWORD",PASSWORD.getText().toString());
                 n.putExtra("AES_HASH"+USERNAME.getText().toString(),getHashkey());
@@ -69,10 +85,9 @@ public class SignIn extends AppCompatActivity {
 
     String getPassKey() {
 
-        Store store = new Store(getApplicationContext(), "maticstore", "#maticnetwork123".toCharArray());
+        Store store = new Store(getApplicationContext(), keyStoreName,KeyStorePass.toCharArray());
         // Get key
         if (store.hasKey(USERNAME.getText().toString())) {
-
             SecretKey key = store.getSymmetricKey(USERNAME.getText().toString(), null);
             // Encrypt/Decrypt data
             Crypto crypto = new Crypto(Options.TRANSFORMATION_SYMMETRIC);
@@ -84,7 +99,6 @@ public class SignIn extends AppCompatActivity {
         else
             {
                 Toast.makeText(SignIn.this, "Username or password incorrect", Toast.LENGTH_LONG).show();
-
         }
         return null;
     }
@@ -92,7 +106,7 @@ public class SignIn extends AppCompatActivity {
 
     String getHashkey() {
 
-        Store store = new Store(getApplicationContext(),"maticstore","#maticnetwork123".toCharArray());
+        Store store = new Store(getApplicationContext(),keyStoreName,KeyStorePass.toCharArray());
         // Get key
         SecretKey key = store.getSymmetricKey("hash" + USERNAME.getText(), null);
         // Encrypt/Decrypt data

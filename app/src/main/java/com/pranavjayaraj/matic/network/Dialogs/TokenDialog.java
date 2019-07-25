@@ -1,4 +1,4 @@
-package com.pranavjayaraj.matic.network.Util;
+package com.pranavjayaraj.matic.network.Dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -22,8 +22,6 @@ public class TokenDialog extends Dialog {
     private  TextView tokenView;
     private int mLastChose;
     private String pathUrl;
-
-    private PopupWindow mPopupWindow;
 
     public TokenDialog(final Context context) {
         super(context);
@@ -72,7 +70,7 @@ public class TokenDialog extends Dialog {
 
     public void setImage(String url,String token) {
         pathUrl = url;
-        loadImageView(pathUrl, R.drawable.agrs, imageView);
+        loadImageView(pathUrl, R.drawable.drw, imageView);
         tokenView.setText(token);
     }
 

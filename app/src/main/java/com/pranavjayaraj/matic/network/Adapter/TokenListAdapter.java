@@ -1,4 +1,4 @@
-package com.pranavjayaraj.matic.network;
+package com.pranavjayaraj.matic.network.Adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 
+import com.pranavjayaraj.matic.network.R;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
@@ -21,16 +23,15 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
-public class CustomListAdapter extends BaseAdapter {
+public class TokenListAdapter extends BaseAdapter {
     private ArrayList<String> token;
-
     private ArrayList<String> coin;
     private ArrayList<String> value;
     private ArrayList<String> listData;
     private LayoutInflater layoutInflater;
     Context context;
 
-    public CustomListAdapter(Context context, ArrayList<String> listData , ArrayList<String> token , ArrayList<String> coin, ArrayList<String> value) {
+    public TokenListAdapter(Context context, ArrayList<String> listData , ArrayList<String> token , ArrayList<String> coin, ArrayList<String> value) {
         this.listData = listData;
         layoutInflater = LayoutInflater.from(context);
         this.token = token;
@@ -82,10 +83,9 @@ public class CustomListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.value.setText(String.valueOf(position));
-        holder.coin.setText(coin.get(position));
         holder.token.setText(token.get(position));
         holder.value.setText(value.get(position));
+        holder.coin.setText(coin.get(position));
         if (holder.icon != null) {
             new BitmapWorkerTask(holder.icon).execute(listData.get(position));
         }
@@ -128,9 +128,11 @@ public class CustomListAdapter extends BaseAdapter {
             if (imageViewReference != null && bitmap != null)
             {
                 final ImageView imageView = imageViewReference.get();
+
                 if (imageView != null)
                 {
                     imageView.setImageBitmap(bitmap);
+
                 }
             }
         }

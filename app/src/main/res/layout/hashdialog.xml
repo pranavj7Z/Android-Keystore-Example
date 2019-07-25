@@ -8,15 +8,15 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_marginLeft="20dp"
-        android:text="Hash"
+        android:text="@string/hash"
         android:textSize="20sp"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:layout_marginBottom="5dp"
         android:layout_height="wrap_content">
     </TextView>
     <View
         android:layout_width="wrap_content"
-        android:background="#BDB9B9"
+        android:background="@color/weirdgrey"
         android:layout_height="1dp">
     </View>
     <TextView
@@ -32,7 +32,7 @@
 
     <View
         android:layout_width="wrap_content"
-        android:background="#BDB9B9"
+        android:background="@color/weirdgrey"
         android:layout_height="1dp">
     </View>
     <LinearLayout
@@ -40,12 +40,12 @@
         android:gravity="center"
         android:layout_height="60dp">
     <Button
-        android:text="Close"
+        android:text="@string/close"
         android:id="@+id/ok"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="#ffffff"
-        android:background="#756767"
+        android:textColor="@color/White"
+        android:background="@color/grey"
         android:layout_width="100dp"
         android:layout_height="35dp">
     </Button>

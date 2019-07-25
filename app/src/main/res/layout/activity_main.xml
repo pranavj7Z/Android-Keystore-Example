@@ -4,14 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".UI.MainActivity">
+<FrameLayout
+    android:layout_width="fill_parent"
 
+    android:layout_height="wrap_content">
+</FrameLayout>
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="New Account"
+        android:text="@string/new_account"
         android:id="@+id/signup"
         android:textStyle="normal"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/border"
         android:textColor="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,12 +29,12 @@
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
         android:background="@color/blue"
-        android:text="Sign In"
+        android:text="@string/sign_in"
         android:id="@id/signin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup"
-        android:textColor="#ffffff">
+        android:textColor="@color/White">
     </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

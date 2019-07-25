@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:text="TOKEN"
+        android:text="@string/token"
         android:layout_marginTop="40dp"
         android:id="@+id/token"
         android:textStyle="bold"
@@ -21,7 +21,7 @@
         android:layout_height="100dp"
         android:layout_marginBottom="50dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/bch"/>
+        android:src="@drawable/drw"/>
 
 
 

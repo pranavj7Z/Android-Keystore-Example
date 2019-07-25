@@ -1,4 +1,4 @@
-package com.pranavjayaraj.matic.network.Util;
+package com.pranavjayaraj.matic.network.Dialogs;
 
 import android.app.Dialog;
 import android.content.Context;

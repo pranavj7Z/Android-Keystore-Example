@@ -1,32 +1,15 @@
-package com.pranavjayaraj.matic.network;
+package com.pranavjayaraj.matic.network.Util;
 import android.util.Base64;
-import java.security.SecureRandom;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.KeySpec;
 import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-import javax.crypto.spec.PBEParameterSpec;
-import android.util.Base64;
 import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 public class AESCrypt {
-
-
-    /**
-     * Encrypt and decrypt messages using AES 256 bit encryption that are compatible with AESCrypt-ObjC and AESCrypt Ruby.
-     * <p/>
-     * Created by scottab on 04/10/2014.
-     */
 
         private static final String TAG = "AESCrypt";
 

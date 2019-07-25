@@ -1,8 +1,7 @@
-package com.pranavjayaraj.matic.network;
+package com.pranavjayaraj.matic.network.UI;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
@@ -10,8 +9,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
-import com.pranavjayaraj.matic.network.Util.HashDialog;
-import com.pranavjayaraj.matic.network.Util.TokenDialog;
+
+import com.pranavjayaraj.matic.network.Adapter.TokenListAdapter;
+import com.pranavjayaraj.matic.network.R;
+import com.pranavjayaraj.matic.network.Util.AESCrypt;
+import com.pranavjayaraj.matic.network.Dialogs.HashDialog;
+import com.pranavjayaraj.matic.network.Dialogs.TokenDialog;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,9 +23,7 @@ import java.util.List;
 
 public class HomeScreen extends AppCompatActivity {
     private List<String> sources;
-
     final static String src[] = {
-
             "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@95af504a411054bbd7a2fb97a84a2c2831d334cc/128/icon/0xbtc.png",
             "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@95af504a411054bbd7a2fb97a84a2c2831d334cc/128/icon/$pac.png",
             "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@95af504a411054bbd7a2fb97a84a2c2831d334cc/128/icon/2give.png",
@@ -43,8 +44,6 @@ public class HomeScreen extends AppCompatActivity {
             "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@95af504a411054bbd7a2fb97a84a2c2831d334cc/128/icon/ae.png",
             "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@95af504a411054bbd7a2fb97a84a2c2831d334cc/128/icon/bnb.png",
             "https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@95af504a411054bbd7a2fb97a84a2c2831d334cc/128/icon/vib.png"
-
-
     };
 
     final static String token[] = {"0XBTC","$PAC","2GIVE","AEON","ARK","BCO","BCN","CTXC","EDO","ENJ","ETH","ETC","BTC","DASH","DRGN","INS","OMNI","AE","BNB","VIB"};
@@ -73,8 +72,8 @@ public class HomeScreen extends AppCompatActivity {
         USERNAME = getIntent().getStringExtra("USERNAME");
         AES_HASH =getIntent().getStringExtra("AES_HASH"+USERNAME);
         PASSWORD = getIntent().getStringExtra("PASSWORD");
-        CustomListAdapter customListAdapter = new CustomListAdapter(this,srcList,tokenList,coinList,valueList);
-        imageList.setAdapter(customListAdapter);
+        TokenListAdapter tokenListAdapter = new TokenListAdapter(this,srcList,tokenList,coinList,valueList);
+        imageList.setAdapter(tokenListAdapter);
         tokenDialog = new TokenDialog(this);
         hashDialog = new HashDialog(this);
 

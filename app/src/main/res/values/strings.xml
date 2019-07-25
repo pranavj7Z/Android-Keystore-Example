@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Matic</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="create_account">Create account</string>
+    <string name="_100_1">100.1</string>
+    <string name="matic_coin">Matic Coin</string>
+    <string name="mtc">MTC</string>
+    <string name="show_hash">Show HASH</string>
+    <string name="my_tokens">My Tokens</string>
+    <string name="hash">Hash</string>
+    <string name="close">Close</string>
+    <string name="new_account">New Account</string>
+    <string name="token">TOKEN</string>
 </resources>
